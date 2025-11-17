@@ -1,8 +1,12 @@
 package com.example.redis;
 
+import java.util.List;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.redis.domain.ItemDto;
 
 @RestController
 @RequestMapping("items")
@@ -18,4 +22,9 @@ public class ItemController {
     ) {
         itemService.purchase(id);
     }
+
+	@GetMapping("/ranks")
+	public List<ItemDto> getRanks() {
+		return itemService.getMostsold();
+	}
 }
